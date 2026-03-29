@@ -66,6 +66,7 @@ type AdapterType =
   | "hermes_local"
   | "opencode_local"
   | "pi_local"
+  | "nanobot_local"
   | "cursor"
   | "http"
   | "openclaw_gateway";
@@ -213,6 +214,7 @@ export function OnboardingWizard() {
     adapterType === "hermes_local" ||
     adapterType === "opencode_local" ||
     adapterType === "pi_local" ||
+    adapterType === "nanobot_local" ||
     adapterType === "cursor";
   const effectiveAdapterCommand =
     command.trim() ||
@@ -224,6 +226,8 @@ export function OnboardingWizard() {
         ? "hermes"
       : adapterType === "pi_local"
       ? "pi"
+      : adapterType === "nanobot_local"
+      ? "nanobot"
       : adapterType === "cursor"
       ? "agent"
       : adapterType === "opencode_local"
@@ -916,6 +920,7 @@ export function OnboardingWizard() {
                     adapterType === "hermes_local" ||
                     adapterType === "opencode_local" ||
                     adapterType === "pi_local" ||
+                    adapterType === "nanobot_local" ||
                     adapterType === "cursor") && (
                     <div className="space-y-3">
                       <div>
@@ -1093,6 +1098,8 @@ export function OnboardingWizard() {
                                 ? `${effectiveAdapterCommand} --output-format json "Respond with hello."`
                               : adapterType === "opencode_local"
                                 ? `${effectiveAdapterCommand} run --format json "Respond with hello."`
+                              : adapterType === "nanobot_local"
+                                ? `${effectiveAdapterCommand} agent -m "Respond with hello."`
                               : `${effectiveAdapterCommand} --print - --output-format stream-json --verbose`}
                           </p>
                           <p className="text-muted-foreground">

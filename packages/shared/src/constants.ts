@@ -28,6 +28,7 @@ export const AGENT_ADAPTER_TYPES = [
   "codex_local",
   "opencode_local",
   "pi_local",
+  "nanobot_local",
   "cursor",
   "openclaw_gateway",
   "hermes_local",
